@@ -1,0 +1,22 @@
+.cards__image {
+  max-width: 282px;
+  min-height: 282px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cards__image:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 854px) {
+  .cards__image {
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .cards__image {
+    height: 282px;
+  }
+}

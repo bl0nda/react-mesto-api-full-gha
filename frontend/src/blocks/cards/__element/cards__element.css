@@ -1,0 +1,16 @@
+.cards__element {
+  max-width: 282px;
+  max-height: 361px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (max-width: 512px) {
+  .cards__element {
+    min-width: 282px;
+  }
+}

@@ -1,0 +1,18 @@
+.profile__name-container {
+  padding: 22px 0 0 30px;
+  grid-area: name;
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 640px) {
+  .profile__name-container {
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .profile__name-container {
+    padding: 26px 0 7px 30px;
+  }
+}

@@ -1,0 +1,13 @@
+.form-welcome__button {
+    width: 358px;
+    min-height: 50px;
+    margin: 216px 0 15px;
+    background-color: #FFFFFF;
+    color: black;
+    font-size: 18px;
+    line-height: 1.22;
+    transition: opacity ease-in-out;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+}

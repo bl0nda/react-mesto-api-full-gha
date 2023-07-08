@@ -1,0 +1,8 @@
+.popup__field-error_active {
+    color: red;
+    font-size: 12px;
+    line-height: 1.25;
+    position: absolute;
+    top: 35px;
+    left: 0;
+}
