@@ -8,7 +8,7 @@ const ConflictError = require('../errors/conflict-err');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -19,7 +19,7 @@ module.exports.getCurrentUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch(next);
 };
@@ -29,7 +29,7 @@ module.exports.getUserById = (req, res, next) => {
   User.findById(userId)
     .orFail(() => next(new NotFoundError('Пользователь не найден')))
     .then((user) => {
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -54,7 +54,7 @@ module.exports.createUser = (req, res, next) => {
     .then((user) => {
       const newUser = user.toObject();
       delete newUser.password;
-      res.status(201).send({ data: newUser });
+      res.status(201).send(newUser);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -80,7 +80,7 @@ module.exports.updateUser = (req, res, next) => {
     )
     .orFail(() => next(new NotFoundError('Пользователь не найден')))
     .then((user) => {
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -100,7 +100,7 @@ module.exports.updateAvatar = (req, res, next) => {
       throw new NotFoundError('Пользователь не найден');
     })
     .then((user) => {
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

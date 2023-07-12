@@ -1,10 +1,11 @@
 /* eslint-disable no-useless-escape */
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4000 } = process.env;
 
 const app = express();
 
@@ -21,6 +22,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
     console.log('connected success');
   });
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
