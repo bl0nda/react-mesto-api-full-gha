@@ -68,6 +68,27 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    if (loggedIn) {
+      api
+        .getProfileData()
+        .then((res) => {
+          setCurrentUser(res);
+        })
+        .catch((err) => console.log(err));
+      api
+        .getInitialCards()
+        .then((res) => {
+          setCards(res);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    tokenCheck();
+  }, []);
+
   const tokenCheck = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -75,7 +96,7 @@ function App() {
         .getContent(token)
         .then((res) => {
           if (res) {
-            const email = res.data.email;
+            const email = res.email;
             setLoggedIn(true);
             setUserData(email);
             navigate("/cards");
@@ -86,27 +107,6 @@ function App() {
         .catch((err) => console.log(err));
     }
   };
-
-  useEffect(() => {
-    tokenCheck();
-  }, []);
-
-  useEffect(() => {
-    if (loggedIn) {
-    api
-      .getProfileData()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => console.log(err));
-    api
-      .getInitialCards()
-      .then((res) => {
-        setCards(res);
-      })
-      .catch((err) => console.log(err));
-    }
-  }, [loggedIn]);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
