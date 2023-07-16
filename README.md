@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.51.225
+IP 158.160.51.225
 
 Frontend https://dianak.nomoredomains.xyz
 
