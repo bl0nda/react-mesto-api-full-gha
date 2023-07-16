@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -29,6 +30,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', createUserValidation, createUser);
 
