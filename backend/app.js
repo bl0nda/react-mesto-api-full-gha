@@ -13,6 +13,7 @@ const helmet = require('helmet');
 
 const { createUser, login } = require('./controllers/user');
 const { loginValidation, createUserValidation } = require('./middlewares/validate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
 const auth = require('./middlewares/auth');
 
@@ -27,6 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 
+app.use(requestLogger);
+
 app.post('/signup', createUserValidation, createUser);
 
 app.post('/signin', loginValidation, login);
@@ -34,6 +37,8 @@ app.post('/signin', loginValidation, login);
 app.use(auth);
 
 app.use(router);
+
+app.use(errorLogger);
 
 app.use(errors());
 
