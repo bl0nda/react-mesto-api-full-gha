@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -17,6 +16,7 @@ const { loginValidation, createUserValidation } = require('./middlewares/validat
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
 const auth = require('./middlewares/auth');
+const handleError = require('./middlewares/handleError');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
   .then(() => {
@@ -50,18 +50,7 @@ app.use(errorLogger);
 
 app.use(errors());
 
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  console.error(err);
-  res
-    .status(statusCode)
-    .send({
-      message: statusCode === 500
-        ? 'На сервере произошла ошибка'
-        : message,
-    });
-});
+app.use(handleError);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

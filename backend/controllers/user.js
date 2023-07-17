@@ -82,7 +82,7 @@ module.exports.updateUser = (req, res, next) => {
     )
     .orFail(() => next(new NotFoundError('Пользователь не найден')))
     .then((user) => {
-      res.status(200).send(user);
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
