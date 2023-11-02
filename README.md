@@ -25,6 +25,7 @@ npm run build
 
 ## Запуск frontend проекта
 npm run start — запускает сервер
+
 npm run dev — запускает сервер с hot-reload
 
 Адрес репозитория: https://github.com/bl0nda/react-mesto-api-full-gha/
