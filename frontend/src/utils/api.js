@@ -114,7 +114,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.dianak.nomoredomains.xyz",
+  // baseUrl: "https://api.dianak.nomoredomains.xyz",
+  baseUrl: 'http://localhost:3000',
 });
 
 export default api;
